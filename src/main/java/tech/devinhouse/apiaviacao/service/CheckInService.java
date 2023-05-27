@@ -2,9 +2,7 @@ package tech.devinhouse.apiaviacao.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import tech.devinhouse.apiaviacao.exception.AssentoOcupadoException;
-import tech.devinhouse.apiaviacao.exception.CheckInException;
-import tech.devinhouse.apiaviacao.exception.RegistroNaoEncontradoException;
+import tech.devinhouse.apiaviacao.exception.*;
 import tech.devinhouse.apiaviacao.model.Passageiro;
 import tech.devinhouse.apiaviacao.repository.PassageiroRepository;
 
@@ -47,10 +45,10 @@ public class CheckInService {
         if (emergencialAssento){
             Integer idade = Math.toIntExact(ChronoUnit.YEARS.between(passageiroCheckIn.getDataNascimento(), LocalDate.now()));
             if(idade<18){
-                throw new RuntimeException();
+                throw new DeMenorException(passageiroCheckIn.getCpf());
             }
             if(!passageiro.getMalasDespachadas()){
-                throw new RuntimeException();
+                throw new MalaNaoDespachadaExpection();
             }
         }
         String eticket = UUID.randomUUID().toString();
