@@ -51,6 +51,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         ErroResponse erro = new ErroResponse(e.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
     }
+    @ExceptionHandler(MalaNaoDespachadaExpection.class)
+    public ResponseEntity<Object> handleMalaNaoDespachadaExpection(MalaNaoDespachadaExpection e) {
+        ErroResponse erro = new ErroResponse(e.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+    }
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex) {
