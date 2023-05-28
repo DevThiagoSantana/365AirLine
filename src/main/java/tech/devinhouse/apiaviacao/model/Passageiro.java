@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -39,7 +38,7 @@ public class Passageiro {
 
 
     public Passageiro(Long cpf, String nome, LocalDate dataNascimento, Enum classificacao,
-                      Integer milhas, String eticket, String assento, Boolean mala){
+                      Integer milhas, String eticket, String assento){
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;

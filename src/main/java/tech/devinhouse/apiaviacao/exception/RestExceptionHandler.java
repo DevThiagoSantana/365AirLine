@@ -57,6 +57,12 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
     }
 
+    @ExceptionHandler(AssentoNaoEncontradoException.class)
+    public ResponseEntity<Object> handleAssentoNaoEncontradoException(AssentoNaoEncontradoException e) {
+        ErroResponse erro = new ErroResponse(e.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+    }
+
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex) {
         Map<String, String> fieldErrors = new HashMap<>();
