@@ -35,7 +35,7 @@ public class CheckInService {
 
        boolean existAssento = assentos.contains(passageiro.getAssento());
         if(!existAssento){
-            throw new RegistroNaoEncontradoException("Assento",passageiro.getAssento());
+            throw new AssentoNaoEncontradoException(passageiro.getAssento());
         }
         boolean occupiedAssento = repo.existsByAssento(passageiro.getAssento());
         if(occupiedAssento){
